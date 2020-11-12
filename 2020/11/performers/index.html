@@ -303,6 +303,10 @@ approximated attention mechanism, $\widehat{\text{Attention}}(Q, K, V)$, in Pyth
 </span>    <span class="k">return</span> <span class="n">d_inv</span> <span class="o">@</span> <span class="n">a_hat</span> <span class="o">@</span> <span class="n">v</span>
 </code></pre></div></div>
 
+<p>Now, instead of our attention matrix $A$ being of size $\mathbb{R}^{L \times L}$,
+it is only of size $\mathbb{R}^{R \times L}$, with the sum of each row
+approximating that of it’s full-rank counterpart.</p>
+
 <h2 id="orthogonal-random-features">Orthogonal Random Features</h2>
 
 <p>Before we make any comparisons between our approximate and full-rank attention
