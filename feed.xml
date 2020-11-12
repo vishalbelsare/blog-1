@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://teddykoker.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://teddykoker.com/" rel="alternate" type="text/html" /><updated>2020-11-12T00:03:47-05:00</updated><id>https://teddykoker.com/feed.xml</id><title type="html">Teddy Koker</title><subtitle>Algorithmic Trading and Machine Learning.</subtitle><entry><title type="html">Performers: The Kernel Trick, Random Features, and Attention</title><link href="https://teddykoker.com/2020/11/performers/" rel="alternate" type="text/html" title="Performers: The Kernel Trick, Random Features, and Attention" /><published>2020-11-11T00:00:00-05:00</published><updated>2020-11-11T00:00:00-05:00</updated><id>https://teddykoker.com/2020/11/performers</id><content type="html" xml:base="https://teddykoker.com/2020/11/performers/">&lt;p&gt;THIS IS A DRAFT. CHECK AGAIN TOMORROW OR CONTINUE AT YOUR OWN RISK.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://teddykoker.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://teddykoker.com/" rel="alternate" type="text/html" /><updated>2020-11-12T00:11:29-05:00</updated><id>https://teddykoker.com/feed.xml</id><title type="html">Teddy Koker</title><subtitle>Algorithmic Trading and Machine Learning.</subtitle><entry><title type="html">Performers: The Kernel Trick, Random Features, and Attention</title><link href="https://teddykoker.com/2020/11/performers/" rel="alternate" type="text/html" title="Performers: The Kernel Trick, Random Features, and Attention" /><published>2020-11-11T00:00:00-05:00</published><updated>2020-11-11T00:00:00-05:00</updated><id>https://teddykoker.com/2020/11/performers</id><content type="html" xml:base="https://teddykoker.com/2020/11/performers/">&lt;p&gt;THIS IS A DRAFT. CHECK AGAIN TOMORROW OR CONTINUE AT YOUR OWN RISK.&lt;/p&gt;
 
 &lt;p&gt;Google AI recently released a paper, &lt;em&gt;Rethinking Attention with Performers&lt;/em&gt;
 &lt;a class=&quot;citation&quot; href=&quot;#choromanski2020rethinking&quot;&gt;(Choromanski et al., 2020)&lt;/a&gt;, which introduces &lt;em&gt;Performer&lt;/em&gt;, a Transformer
@@ -32,7 +32,7 @@ $\varphi : \mathbb{R}^2 \mapsto \mathbb{R}^3$:&lt;/p&gt;
 
 &lt;p&gt;This function $\varphi$ is known as the &lt;a href=&quot;https://en.wikipedia.org/wiki/Polynomial_kernel&quot;&gt;polynomial
 kernel&lt;/a&gt; of degree $d=2$. If we
-apply it to our data, xx, we can visualize that it becomes linearly separable:&lt;/p&gt;
+apply it to our data, $x$, we can visualize that it becomes linearly separable:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/poly_circles.png&quot; alt=&quot;poly circles&quot; /&gt;&lt;/p&gt;
 
