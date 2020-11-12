@@ -3,12 +3,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Performers: The Kernel Trick, Random Features, and Attention | Teddy Koker</title>
+<title>Performers: The Kernel Trick, Random Fourier Features, and Attention | Teddy Koker</title>
 <meta name="generator" content="Jekyll v4.0.1" />
-<meta property="og:title" content="Performers: The Kernel Trick, Random Features, and Attention" />
+<meta property="og:title" content="Performers: The Kernel Trick, Random Fourier Features, and Attention" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="THIS IS A DRAFT. CHECK AGAIN TOMORROW OR CONTINUE AT YOUR OWN RISK." />
-<meta property="og:description" content="THIS IS A DRAFT. CHECK AGAIN TOMORROW OR CONTINUE AT YOUR OWN RISK." />
+<meta name="description" content="Google AI recently released a paper, Rethinking Attention with Performers (Choromanski et al., 2020), which introduces Performer, a Transformer architecture which estimates the full-rank-attention mechanism using orthogonal random features to approximate the softmax kernel with linear space and time complexity. In this post we will investigate how this works, and how it is useful for the machine learning community." />
+<meta property="og:description" content="Google AI recently released a paper, Rethinking Attention with Performers (Choromanski et al., 2020), which introduces Performer, a Transformer architecture which estimates the full-rank-attention mechanism using orthogonal random features to approximate the softmax kernel with linear space and time complexity. In this post we will investigate how this works, and how it is useful for the machine learning community." />
 <link rel="canonical" href="https://teddykoker.com/2020/11/performers/" />
 <meta property="og:url" content="https://teddykoker.com/2020/11/performers/" />
 <meta property="og:site_name" content="Teddy Koker" />
@@ -17,10 +17,10 @@
 <meta property="article:published_time" content="2020-11-11T00:00:00-05:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="https://teddykoker.com/images/iid_vs_ortho.png" />
-<meta property="twitter:title" content="Performers: The Kernel Trick, Random Features, and Attention" />
+<meta property="twitter:title" content="Performers: The Kernel Trick, Random Fourier Features, and Attention" />
 <meta name="twitter:site" content="@teddykoker" />
 <script type="application/ld+json">
-{"url":"https://teddykoker.com/2020/11/performers/","dateModified":"2020-11-11T00:00:00-05:00","datePublished":"2020-11-11T00:00:00-05:00","headline":"Performers: The Kernel Trick, Random Features, and Attention","mainEntityOfPage":{"@type":"WebPage","@id":"https://teddykoker.com/2020/11/performers/"},"description":"THIS IS A DRAFT. CHECK AGAIN TOMORROW OR CONTINUE AT YOUR OWN RISK.","image":"https://teddykoker.com/images/iid_vs_ortho.png","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"https://teddykoker.com/2020/11/performers/","dateModified":"2020-11-11T00:00:00-05:00","datePublished":"2020-11-11T00:00:00-05:00","headline":"Performers: The Kernel Trick, Random Fourier Features, and Attention","mainEntityOfPage":{"@type":"WebPage","@id":"https://teddykoker.com/2020/11/performers/"},"description":"Google AI recently released a paper, Rethinking Attention with Performers (Choromanski et al., 2020), which introduces Performer, a Transformer architecture which estimates the full-rank-attention mechanism using orthogonal random features to approximate the softmax kernel with linear space and time complexity. In this post we will investigate how this works, and how it is useful for the machine learning community.","image":"https://teddykoker.com/images/iid_vs_ortho.png","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://teddykoker.com/feed.xml" title="Teddy Koker" /><script>
 if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
@@ -81,16 +81,14 @@ if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNo
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Performers: The Kernel Trick, Random Features, and Attention</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Performers: The Kernel Trick, Random Fourier Features, and Attention</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="2020-11-11T00:00:00-05:00" itemprop="datePublished">Nov 11, 2020
       </time></p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>THIS IS A DRAFT. CHECK AGAIN TOMORROW OR CONTINUE AT YOUR OWN RISK.</p>
-
-<p>Google AI recently released a paper, <em>Rethinking Attention with Performers</em>
+    <p>Google AI recently released a paper, <em>Rethinking Attention with Performers</em>
 <a class="citation" href="#choromanski2020rethinking">(Choromanski et al., 2020)</a>, which introduces <em>Performer</em>, a Transformer
 architecture which estimates the full-rank-attention mechanism using orthogonal
 random features to approximate the softmax kernel with linear space and time
@@ -190,7 +188,7 @@ approximate any function $K$ that can be written in terms of $K_\text{gauss}$.</
 
 <h2 id="attention">Attention</h2>
 
-<p>In a <a href="/nlp-from-scratch-annotated-attention/">previous blog post</a>, we went over
+<p>In a <a href="/2020/02/nlp-from-scratch-annotated-attention/">previous blog post</a>, we went over
 the <em>self-attention</em> mechanism, an how it was introduced for language
 translation. Nowadays, most language models use <em>scaled-dot-product attention</em> as
 defined in the <em>Transformers</em> paper <a class="citation" href="#vaswani2017attention">(Vaswani et al., 2017)</a>:</p>
@@ -273,7 +271,7 @@ in terms of $K_\text{gauss}$:</p>
 K_\text{gauss}(x_i, x_j)
 \exp \left( \frac{\lVert x_j \rVert^2}{2} \right)\]
 
-<p>See Appendix TODO for full derivation. With this derivation, it is trivial to
+<p>See Appendix for full derivation. With this derivation, it is trivial to
 come up with our random feature mapping $z_\omega$ that approximates
 the $K_\text{softmax}$ kernel:</p>
 
@@ -380,7 +378,48 @@ the experimentation in the paper.</p>
 
 <h2 id="appendix">Appendix</h2>
 
-<p>TODO</p>
+<p>Derive $
+K_\text{softmax}(x_i, x_j) =
+\exp \left( \frac{\lVert x_i \rVert^2}{2} \right)
+K_\text{gauss}(x_i, x_j)
+\exp \left( \frac{\lVert x_j \rVert^2}{2} \right)
+$:</p>
+
+\[K_\text{gauss}(x_i, x_j) = \exp(-\gamma \lVert x_i - x_j \rVert^2)\]
+
+<p>Let $\gamma = \frac{1}{2}$</p>
+
+\[\begin{aligned}
+
+K_\text{gauss}(x_i, x_j) &amp;= \exp \left(-\frac{1}{2} \lVert x_i - x_j \rVert^2 \right) \\
+
+&amp;= \exp \left(-\frac{1}{2} (\lVert x_i \rVert^2 + \lVert x_j \rVert^2 - 2(x_i^\top x_j)) \right) \\
+
+&amp;= \exp \left(
+  -\frac{\lVert x_i \rVert^2}{2}  
+  -\frac{\lVert x_j \rVert^2}{2} + x_i^\top x_j \right) \\
+
+&amp;= \exp \left(
+  -\frac{\lVert x_i \rVert^2}{2}  
+  -\frac{\lVert x_j \rVert^2}{2} + x_i^\top x_j \right) \\
+
+&amp;= 
+\exp \left( \frac{\lVert x_i \rVert^2}{2} \right)^{-1}
+\exp (x_i^\top x_j ) 
+\exp \left( \frac{\lVert x_j \rVert^2}{2} \right)^{-1}\\
+
+
+\exp \left( \frac{\lVert x_i \rVert^2}{2} \right)
+K_\text{gauss}(x_i, x_j)
+\exp \left( \frac{\lVert x_j \rVert^2}{2} \right) 
+&amp;= \exp (x_i^\top x_j) \\
+
+\exp \left( \frac{\lVert x_i \rVert^2}{2} \right)
+K_\text{gauss}(x_i, x_j)
+\exp \left( \frac{\lVert x_j \rVert^2}{2} \right) 
+&amp;= K_\text{softmax}(x_i, x_j)
+
+\end{aligned}\]
 
 
   </div><a class="u-url" href="/2020/11/performers/" hidden></a>
