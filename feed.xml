@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://teddykoker.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://teddykoker.com/" rel="alternate" type="text/html" /><updated>2020-11-12T11:34:32-05:00</updated><id>https://teddykoker.com/feed.xml</id><title type="html">Teddy Koker</title><subtitle>Algorithmic Trading and Machine Learning.</subtitle><entry><title type="html">Performers: The Kernel Trick, Random Fourier Features, and Attention</title><link href="https://teddykoker.com/2020/11/performers/" rel="alternate" type="text/html" title="Performers: The Kernel Trick, Random Fourier Features, and Attention" /><published>2020-11-11T00:00:00-05:00</published><updated>2020-11-11T00:00:00-05:00</updated><id>https://teddykoker.com/2020/11/performers</id><content type="html" xml:base="https://teddykoker.com/2020/11/performers/">&lt;p&gt;Google AI recently released a paper, &lt;em&gt;Rethinking Attention with Performers&lt;/em&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://teddykoker.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://teddykoker.com/" rel="alternate" type="text/html" /><updated>2020-11-13T12:05:25-05:00</updated><id>https://teddykoker.com/feed.xml</id><title type="html">Teddy Koker</title><subtitle>Algorithmic Trading and Machine Learning.</subtitle><entry><title type="html">Performers: The Kernel Trick, Random Fourier Features, and Attention</title><link href="https://teddykoker.com/2020/11/performers/" rel="alternate" type="text/html" title="Performers: The Kernel Trick, Random Fourier Features, and Attention" /><published>2020-11-11T00:00:00-05:00</published><updated>2020-11-11T00:00:00-05:00</updated><id>https://teddykoker.com/2020/11/performers</id><content type="html" xml:base="https://teddykoker.com/2020/11/performers/">&lt;p&gt;Google AI recently released a paper, &lt;em&gt;Rethinking Attention with Performers&lt;/em&gt;
 &lt;a class=&quot;citation&quot; href=&quot;#choromanski2020rethinking&quot;&gt;(Choromanski et al., 2020)&lt;/a&gt;, which introduces &lt;em&gt;Performer&lt;/em&gt;, a Transformer
 architecture which estimates the full-rank-attention mechanism using orthogonal
 random features to approximate the softmax kernel with linear space and time
@@ -245,6 +245,11 @@ full-rank attention.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Lines are mean of 15 samples, shaded region is the standard deviation. All of the
 code to reproduce these figures can be found at:
 &lt;a href=&quot;https://github.com/teddykoker/performer&quot;&gt;github.com/teddykoker/performer&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We can see that our current approximation method using $z^\text{sin/cos}$ does
+not work well when using independent and identically distributed (IID) features,
+but the estimation is quite good for orthogonal random features with a large
+enough $R$.&lt;/p&gt;
 
 &lt;h2 id=&quot;positive-random-features&quot;&gt;Positive Random Features&lt;/h2&gt;
 
