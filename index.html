@@ -18,7 +18,7 @@
 <meta property="twitter:title" content="Teddy Koker" />
 <meta name="twitter:site" content="@teddykoker" />
 <script type="application/ld+json">
-{"url":"https://teddykoker.com/","headline":"Teddy Koker","description":"Algorithmic Trading and Machine Learning.","image":"https://teddykoker.com/images/logo.png","name":"Teddy Koker","@type":"WebSite","@context":"https://schema.org"}</script>
+{"description":"Algorithmic Trading and Machine Learning.","image":"https://teddykoker.com/images/logo.png","headline":"Teddy Koker","@type":"WebSite","url":"https://teddykoker.com/","name":"Teddy Koker","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://teddykoker.com/feed.xml" title="Teddy Koker" /><script>
 if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
@@ -78,7 +78,24 @@ if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNo
       <div class="wrapper">
         <div class="home">
 <h2 class="post-list-heading">Posts</h2>
-    <ul class="post-list"><li><span class="post-meta">Nov 11, 2020</span>
+    <ul class="post-list"><li><span class="post-meta">Dec 18, 2020</span>
+        <h3>
+          <a class="post-link" href="/2020/12/dataloader/">
+            DataLoaders Explained: Building a Multi-Process Data Loader from Scratch
+          </a>
+        </h3><p>When training a Deep Learning model, one must often read and pre-process data
+before it can be passed through the model. Depending on the data source and
+transformations needed, this step can amount to a non-negligable amount of time,
+which leads to unecessarily longer training times. This bottleneck is often
+remedied using a
+<a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader"><code class="highlighter-rouge">torch.utils.data.DataLoader</code></a>
+for PyTorch, or a
+<a href="https://www.tensorflow.org/api_docs/python/tf/data/Dataset"><code class="highlighter-rouge">tf.data.Dataset</code></a>
+for Tensorflow. These structures leverage parallel processing and pre-fetching
+in order reduce data loading time as much as possible. In this post we will
+build a simple version of PyTorch’s <code class="highlighter-rouge">DataLoader</code>, and show the benefits of
+parallel pre-processing.</p>
+</li><li><span class="post-meta">Nov 11, 2020</span>
         <h3>
           <a class="post-link" href="/2020/11/performers/">
             Performers: The Kernel Trick, Random Fourier Features, and Attention
