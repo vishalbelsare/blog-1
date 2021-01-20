@@ -3,10 +3,10 @@
 	"file": "main.css",
 	"sources": [
 		"main.scss",
-		"../../.rvm/gems/ruby-2.6.3/gems/minima-2.5.1/_sass/minima.scss",
-		"../../.rvm/gems/ruby-2.6.3/gems/minima-2.5.1/_sass/minima/_base.scss",
-		"../../.rvm/gems/ruby-2.6.3/gems/minima-2.5.1/_sass/minima/_layout.scss",
-		"../../.rvm/gems/ruby-2.6.3/gems/minima-2.5.1/_sass/minima/_syntax-highlighting.scss"
+		"../../.rvm/gems/ruby-2.7.1/gems/minima-2.5.1/_sass/minima.scss",
+		"../../.rvm/gems/ruby-2.7.1/gems/minima-2.5.1/_sass/minima/_base.scss",
+		"../../.rvm/gems/ruby-2.7.1/gems/minima-2.5.1/_sass/minima/_layout.scss",
+		"../../.rvm/gems/ruby-2.7.1/gems/minima-2.5.1/_sass/minima/_syntax-highlighting.scss"
 	],
 	"sourcesContent": [
 		"@import \"minima\";\n\n// add horizontal scrolling to overflowing elements\ndiv.post-content div:not(.highlight) {\n     overflow-x: auto;\n     margin-bottom: 1rem;\n}\n\ntable {\n  margin: 0;\n}\n\nblockquote {\n    //font-style: normal\n    letter-spacing: normal;\n    font-size: 16px;\n}\n",
